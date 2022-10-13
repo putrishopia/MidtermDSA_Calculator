@@ -43,7 +43,7 @@ int main ()
     			push(&head, insertToHistory);
     		}
 						
-			OnOff=3;
+			OnOff=4;
 		}
 		
 		//to look at history
@@ -70,7 +70,19 @@ int main ()
 			}
 			
 		}
-		
+		//to show the calculator instruction
+        	else if(OnOff==3){
+            		cout<<"Symbol in this calculator: \n";
+            		cout <<"/: Division (/)\t\t\t"<<"s: Sin (in rad)\t\t"<<"\t\tx: square root"<<endl;
+            		cout <<"*: Multiplication (*)\t\t"<<"c: Cos (in rad)\t\t"<<"\t\ty: log"<<endl;
+            		cout <<"-: Subtraction (-)\t\t"<<"t: Tan (in rad)\t\t"<<"\t\tz: ln"<<endl;
+            		cout <<"+: Addition (+)\t\t\t"<<"m: Inverse of Sin (in rad)\t\t"<<endl;
+            		cout <<"^: Exponent (i^n))\t\t"<<"n: Inverse of Cos (in rad)\t\t"<<endl;
+            		cout <<"\t\t\t\t"<<"o: Inverse of Tan (in rad)\t\t"<<endl;
+
+            		cout <<"\nExample of using trigonometric function: \ns90 = sin 90 (in radian)\n\n";
+
+        		}
 		//shut down
 		else if(OnOff==0){
 			cout<<"Thank you";
