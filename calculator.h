@@ -62,3 +62,57 @@ public:
 			return false;
         }
 	}
+// checking if spaces appear in user's input
+	bool isSpace(char character)
+	{
+		if (character == ' ' || character == '\r' || character == '\n')
+			return true;
+		else
+			return false;
+	}
+	// checking if there exists basic trigonometric functions
+	bool isTrigonometry(char character)
+	{
+	    if (character == 's' || character == 'c' || character == 't')
+	        return true;
+	    else
+	        return false;
+	}
+    // checking if there exists sqrt, log, or ln
+	bool isExtended(char character)
+	{
+	    if(character == 'x' || character == 'y' || character == 'z')
+	        return true;
+        else
+            return false;
+	}
+    // precedence checker
+	int precedence(char character)
+	{
+		if (character == '^')
+			return 4;
+		else if (character == '*' || character == '/')
+			return 3;
+		else if (character == 's' || character == 'c' || character == 't' || character == 'x' || character == 'y' || character == 'z')
+			return 2;
+		else if (character == '+' || character == '-')
+			return 1;
+		else if (character == '(' || character == ')' || character == '[' || character == ']' || character == '{' || character == '}')
+			return 0;
+		else
+			return -1;
+	}
+    // operator between two values method
+	double operate(double valueOne, double valueTwo, char op)
+	{
+
+
+		switch (op)
+		{
+		case '+': return valueOne + valueTwo; break;
+		case '-': return valueOne - valueTwo; break;
+		case '*': return valueOne * valueTwo; break;
+		case '/': return valueOne / valueTwo; break;
+		case '^': return (double) pow(valueOne, valueTwo); break;
+		}
+	}
