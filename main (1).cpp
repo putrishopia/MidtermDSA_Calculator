@@ -46,14 +46,14 @@ int main ()
 						
 			
 		
-		//to look at the history
+		//to look at history
 		else if(OnOff==2){
 			int historyOperation=3;
 			while (historyOperation!=0){
 				cout<<"\nYour calculation history:\n";
 				printHistory(head);
 				cout<<"\nwhat do you want to do?\n"
-					<<"1: to remove a history\n"
+					<<"1: to remove the history\n"
 					<<"0: to exit history\n";	
 				cin>>historyOperation;
 				//delete history
