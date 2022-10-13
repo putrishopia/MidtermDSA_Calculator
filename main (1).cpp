@@ -46,7 +46,7 @@ int main ()
 			OnOff=4;
 		}
 		
-		//to look at history
+		//to look at the history
 		else if(OnOff==2){
 			int historyOperation=3;
 			while (historyOperation!=0){
