@@ -116,3 +116,78 @@ public:
 		case '^': return (double) pow(valueOne, valueTwo); break;
 		}
 	}
+    // operator for trigonometric functions
+	double trigonometry(char character, double value)
+	{
+       	double sinus = sin(value);
+	    double cosin = cos(value);
+	    double tangent = tan(value);
+		switch(character) {
+    	    case 's': return sinus; break;
+            case 'c': return cosin; break;
+            case 't': return tangent; break;
+		}
+	}
+	// operator for extended functions
+	double extended(char character, double value)
+	{
+	    double x = sqrt(value);
+	    double y = log10(value);
+	    double z = log(value);
+	    switch(character) {
+	        case 'x': return x; break;
+	        case 'y': return y; break;
+	        case 'z': return z; break;
+	    }
+	}
+    // whole evaluation process combined
+	double eval()
+	{
+		double finalAnswer;
+		for (size_t i = 0; i < infix.length(); i++)
+		{
+			if (isOperand(infix[i]) == true)
+			{
+				double currentNumber = 0;
+				while (i < infix.length() && ( isOperand(infix[i]) || infix[i] == '.'))
+				{
+          			if (infix[i] == '.')
+					{
+            			int counter = 0;
+            			int dec = 0;
+            			i++;
+            			for(; i < infix.length(); i++)
+						{
+              				if (isOperand(infix[i]))
+							{
+                				dec = 10 * dec + (int)(infix[i] - '0');
+                				counter++;
+              				}
+              				else break;
+            			}
+            			double calculatedDec= (double)dec / (double)(pow(10, counter));
+            			// cout << currentNumber << endl;
+            			// cout << fixed << setprecision(5) << calculatedDec << endl;
+            			currentNumber += calculatedDec;
+
+      	    		}
+        	  		else
+					{
+						if (infix[i]!='p')
+						{
+							currentNumber = 10 * currentNumber + (double)(infix[i] - '0');
+						}
+						if (infix[i]=='p'&&currentNumber==0)
+						{
+							currentNumber=M_PI;
+						}
+						else if (infix[i]=='p'&&currentNumber!=0)
+						{
+							currentNumber=currentNumber*M_PI;
+						}
+						++i;
+          			}
+				}
+				operands.push(currentNumber);
+				--i;
+			}
