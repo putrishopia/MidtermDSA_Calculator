@@ -22,6 +22,7 @@ int main ()
 		cout<<"\nWhat would you want to do?\n";
 		cout<<"1: to make calculation\n";
 		cout<<"2: to see calculation history\n";
+		cout<<"3: to see calculation instruction\n;
 		cout<<"0: shut down\n";
 		cin>>OnOff;
 		
@@ -43,8 +44,7 @@ int main ()
     			push(&head, insertToHistory);
     		}
 						
-			OnOff=4;
-		}
+			
 		
 		//to look at the history
 		else if(OnOff==2){
