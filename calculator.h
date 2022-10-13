@@ -191,3 +191,63 @@ public:
 				operands.push(currentNumber);
 				--i;
 			}
+
+						else if(isTrigonometry(infix[i])) {
+			    if (infix[i] == 's' || infix[i] == 'c' || infix[i] == 't') {
+			        operators.push(infix[i]);
+			    }
+				char opTrig = operators.pop();
+				double val = 0;
+					while ( isOperand(infix[i + 1]) == true)
+					  	        {
+					  	            if (infix[i+1] != 'p')
+					  	            {
+					  	            val =  10 * val + (double)(infix[i + 1] - '0');
+					  	            }
+					  	            i++;
+					  	            if (infix[i+1]=='p'&& val !=0)
+						                {
+							                val=val*M_PI;
+						                }
+					  	            }
+				double hasilTrig = trigonometry(opTrig, val);
+				operands.push(hasilTrig);
+			}
+
+			else if(isExtended(infix[i])) {
+			    if(infix[i] == 'x' || infix[i] == 'y' || infix[i] == 'z') {
+			        operators.push(infix[i]);
+			    }
+			    char opEx = operators.pop();
+			    double angka = 0;
+				 while ( isOperand(infix[i + 1]) == true)
+					{
+					 if (infix[i+1] != 'p')
+					     {
+					  	angka =  10 * angka + (double)(infix[i + 1] - '0');
+					  	i++;
+					     }
+					  if (infix[i+1]=='p'&& angka !=0)
+						                {
+							                angka = angka*M_PI;
+						                }
+					  	            }
+			    double hasilEx = extended(opEx, angka);
+			    operands.push(hasilEx);
+			}
+
+			else if (infix[i] == '(')
+				operators.push(infix[i]);
+
+			else if (infix[i] == ')')
+			{
+				while (operators.top() != '(')
+				{
+					double valueOne = operands.pop();
+					double valueTwo = operands.pop();
+					char op = operators.pop();
+					operands.push(operate(valueTwo,valueOne,op));
+				}
+				operators.pop();
+			}
+			
