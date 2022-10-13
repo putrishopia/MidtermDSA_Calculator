@@ -250,4 +250,57 @@ public:
 				}
 				operators.pop();
 			}
+
+			else if (isSpace(infix[i]) == true)
+				continue;
+
+			else if (isOperator(infix[i]) == true)
+			{
+				if (operators.empty() == true || precedence(infix[i]) > precedence(operators.top()))
+				{
+					operators.push(infix[i]);
+				}
+				else
+				{
+    			    double valueTwo = operands.pop();
+    				double valueOne = operands.pop();
+					char op = operators.pop();
+                    double operatedValue = operate(valueOne, valueTwo, op);
+                    cout << valueOne << " " << op << " " << valueTwo << " = " << operatedValue << endl;
+    				operands.push(operatedValue);
+    				operators.push(infix[i]);
+				}
+			}
+		}
+
+		finalAnswer = operands.top();
+
+		while (!operators.empty())
+		{
+            operands.loop();
+			double valueTwo = operands.pop();
+			double valueOne = operands.pop();
+			char op = operators.pop();
+
+            double operateValue = operate(valueOne, valueTwo, op);
+
+			operands.push(operateValue, true);
+			finalAnswer = operateValue;
+		}
+
+		return finalAnswer;
+	}
+	// accessor for expression input
+	void setExpr(string infixExpr)
+	{
+		infix = infixExpr;
+	}
+    // mutator for expression input
+	string getExpr()
+	{
+		return infix;
+	}
+};
+
+#endif // CALCULATOR_H
 			
